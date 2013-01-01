@@ -39,8 +39,13 @@ if ($article = OOArticle::getArticleById($REX["ARTICLE_ID"])) {
     ## Adding referer only if target is not login_ok Article
     if($REX['ADDON']['community']['plugin_auth']['article_login_ok'] != $REX['ARTICLE_ID'])
       $params = array($REX['ADDON']['community']['plugin_auth']['request']['ref'] => urlencode($_SERVER['REQUEST_URI']));
-    
-    $redirect = rex_getUrl($REX['ADDON']['community']['plugin_auth']['article_withoutperm'], '', $params, '&');
+
+    ## Redirect to withoutperm Article, but only if withoutperm Article is accessible
+    $error_article = OOArticle::getArticleById($REX['ADDON']['community']['plugin_auth']['article_withoutperm']);
+    if(rex_com_auth::getPermType($error_article) == 2 && (isset($REX["COM_USER"]) && is_object($REX["COM_USER"])))
+      $redirect = rex_getUrl($REX['ADDON']['community']['plugin_auth']['article_login_ok'], '', $params, '&');
+    else
+      $redirect = rex_getUrl($REX['ADDON']['community']['plugin_auth']['article_withoutperm'], '', $params, '&');
   }
 }
   

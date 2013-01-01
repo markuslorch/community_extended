@@ -2,7 +2,27 @@
 
 class rex_com_auth
 {
- 
+  
+    /**
+     * Retruns the Article Permtype rekursive
+     * @param OOArticle $obj
+     * @return int
+     */
+    function getPermType($obj)
+    {
+      $permtype = (int) $obj->getValue('art_com_permtype');
+    
+      if($permtype != 1 && $permtype != 2)
+      {
+        if ($o = $obj->getParent())
+          return self::getPermType($o);
+         
+        return 3;
+      }
+    
+      return $permtype;
+    } 
+    
     /*
      * return Article right rekursive
      * 0:translate:com_perm_extends|1:translate:com_perm_only_logged_in|2:translate:com_perm_only_not_logged_in|3:translate:com_perm_all
