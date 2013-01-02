@@ -33,7 +33,7 @@ if ($login_status == 2) {
  * Checking page permissions
  */
 if ($article = OOArticle::getArticleById($REX["ARTICLE_ID"])) {
-  if(!rex_com_auth::checkperm($article) && !$redirect  && $REX['ADDON']['community']['plugin_auth']['article_withoutperm'] != $REX['ARTICLE_ID']) {
+  if(!rex_com_auth::checkperm($article) && !$redirect  && $REX['ADDON']['community']['plugin_auth']['article_login'] != $REX['ARTICLE_ID']) {
     $params = null;
     
     ## Adding referer only if target is not login_ok Article
