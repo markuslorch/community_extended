@@ -15,8 +15,8 @@ if(rex_request("func","string")=="update")
 
 	$REX['ADDON']['community']['plugin_auth']['auth_active'] = rex_request("auth_active","int");
 	$REX['ADDON']['community']['plugin_auth']['stay_active'] = rex_request("stay_active","int");
+	$REX['ADDON']['community']['plugin_auth']['article_login'] = rex_request("article_login","int");
 	$REX['ADDON']['community']['plugin_auth']['article_login_ok'] = rex_request("article_login_ok","int");
-	$REX['ADDON']['community']['plugin_auth']['article_login_failed'] = rex_request("article_login_failed","int");
 	$REX['ADDON']['community']['plugin_auth']['article_logout'] = rex_request("article_logout","int");
 	$REX['ADDON']['community']['plugin_auth']['article_withoutperm'] = rex_request("article_withoutperm","int");
 	$REX['ADDON']['community']['plugin_auth']['passwd_hashed'] = rex_request("passwd_hashed","boolean");
@@ -31,8 +31,8 @@ if(rex_request("func","string")=="update")
 	$content = '
 $REX[\'ADDON\'][\'community\'][\'plugin_auth\'][\'auth_active\'] = '.$REX['ADDON']['community']['plugin_auth']['auth_active'].';
 $REX[\'ADDON\'][\'community\'][\'plugin_auth\'][\'stay_active\'] = '.$REX['ADDON']['community']['plugin_auth']['stay_active'].';
+$REX[\'ADDON\'][\'community\'][\'plugin_auth\'][\'article_login\'] = '.$REX['ADDON']['community']['plugin_auth']['article_login'].';
 $REX[\'ADDON\'][\'community\'][\'plugin_auth\'][\'article_login_ok\'] = '.$REX['ADDON']['community']['plugin_auth']['article_login_ok'].';
-$REX[\'ADDON\'][\'community\'][\'plugin_auth\'][\'article_login_failed\'] = '.$REX['ADDON']['community']['plugin_auth']['article_login_failed'].';
 $REX[\'ADDON\'][\'community\'][\'plugin_auth\'][\'article_logout\'] = '.$REX['ADDON']['community']['plugin_auth']['article_logout'].';
 $REX[\'ADDON\'][\'community\'][\'plugin_auth\'][\'article_withoutperm\'] = '.$REX['ADDON']['community']['plugin_auth']['article_withoutperm'].';
 $REX[\'ADDON\'][\'community\'][\'plugin_auth\'][\'login_field\'] = "'.$REX['ADDON']['community']['plugin_auth']['login_field'].'";
@@ -159,18 +159,18 @@ gespeichert werden.</p>
 
 								<div class="rex-form-row">
 									<p class="rex-form-col-a rex-form-widget">
+										<label for="rex-form-article_login">'.$I18N->msg("com_auth_info_id_jump_login").'</label>
+                    					'. rex_var_link::_getLinkButton('article_login', 2, stripslashes($REX['ADDON']['community']['plugin_auth']['article_login'])) .'
+									</p>
+								</div>
+								
+								<div class="rex-form-row">
+									<p class="rex-form-col-a rex-form-widget">
 										<label for="rex-form-article_login_ok">'.$I18N->msg("com_auth_info_id_jump_ok").'</label>
 										'. rex_var_link::_getLinkButton('article_login_ok', 1, stripslashes($REX['ADDON']['community']['plugin_auth']['article_login_ok'])) .'
 									</p>
 								</div>
 							
-								<div class="rex-form-row">
-									<p class="rex-form-col-a rex-form-widget">
-										<label for="rex-form-article_login_failed">'.$I18N->msg("com_auth_info_id_jump_not_ok").'</label>
-                    					'. rex_var_link::_getLinkButton('article_login_failed', 2, stripslashes($REX['ADDON']['community']['plugin_auth']['article_login_failed'])) .'
-									</p>
-								</div>
-								
 								<div class="rex-form-row">
 									<p class="rex-form-col-a rex-form-widget">
 										<label for="rex-form-article_logout">'.$I18N->msg("com_auth_info_id_jump_logout").'</label>

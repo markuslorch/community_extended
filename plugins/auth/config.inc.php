@@ -26,10 +26,10 @@ if(isset($I18N) && is_object($I18N)) {
 // --- DYN
 $REX['ADDON']['community']['plugin_auth']['auth_active'] = 1;
 $REX['ADDON']['community']['plugin_auth']['stay_active'] = 1;
+$REX['ADDON']['community']['plugin_auth']['article_login'] = 12;
 $REX['ADDON']['community']['plugin_auth']['article_login_ok'] = 1;
-$REX['ADDON']['community']['plugin_auth']['article_login_failed'] = 12;
 $REX['ADDON']['community']['plugin_auth']['article_logout'] = 12;
-$REX['ADDON']['community']['plugin_auth']['article_withoutperm'] = 12;
+$REX['ADDON']['community']['plugin_auth']['article_withoutperm'] = 16;
 $REX['ADDON']['community']['plugin_auth']['login_field'] = "login";
 $REX['ADDON']['community']['plugin_auth']['passwd_hashed'] = "1";
 // --- /DYN
